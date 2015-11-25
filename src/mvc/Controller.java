@@ -1,6 +1,8 @@
 package mvc;
 
+import java.util.Arrays;
 import java.util.InputMismatchException;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -58,6 +60,44 @@ public class Controller {
     }
 
     //TODO: Private String calcCode() {}
+    public String calcCode(int date, int depNo) {
+        String result;
+        int iCRC;
+        int[] sKey = new int[10];
+        depNo += 1000;
+        result = "" + depNo;
+        result = result.substring(Math.max(0, result.length() - 3));
+        result = date + result;
+        iCRC = 0;
+        for (int i = 0; i < 9; i++) {
+            iCRC += Integer.parseInt(String.valueOf(result.charAt(i)));
+        }
+        iCRC = iCRC % 9;
+        sKey[0] = iCRC;
+        sKey[1] = Integer.parseInt(String.valueOf(result.charAt(8)));
+        sKey[2] = Integer.parseInt(String.valueOf(result.charAt(3)));
+        sKey[3] = Integer.parseInt(String.valueOf(result.charAt(1)));
+        sKey[4] = Integer.parseInt(String.valueOf(result.charAt(6)));
+        sKey[5] = Integer.parseInt(String.valueOf(result.charAt(2)));
+        sKey[6] = Integer.parseInt(String.valueOf(result.charAt(5)));
+        sKey[7] = Integer.parseInt(String.valueOf(result.charAt(0)));
+        sKey[8] = Integer.parseInt(String.valueOf(result.charAt(4)));
+        sKey[9] = Integer.parseInt(String.valueOf(result.charAt(7)));
+
+        StringBuilder builder = new StringBuilder();
+        for (int i : sKey) {
+            builder.append(i);
+        }
+        result = builder.toString();
+
+        for (int i = 0; i < iCRC; i++) {
+            result = result.charAt(9) + result.substring(0, 9);
+        }
+
+
+
+        return result;
+    }
 
     /**
      * Алгорит работы приложения

@@ -13,6 +13,7 @@ public class Run {
         View view = new View();
         Controller ctrl = new Controller(view, model);
 
-        ctrl.run();
+//        ctrl.run();
+        ctrl.calcCode(241115, 169);
     }
 }
