@@ -1,1 +1,9 @@
+### Java ###
 
+# IDE folders #
+out
+META-INF
+
+# IDE settings #
+.idea/workspace.xml
+.idea/uiDesigner.xml
