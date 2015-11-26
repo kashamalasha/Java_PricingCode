@@ -16,11 +16,12 @@ public class View {
     public void showMainMenu() {
         this.clearScreen();
         System.out.println();
-        System.out.println("  <=   Меню  =>  ");
-        System.out.println("  -------------  ");
-        System.out.println("  1 = Генерация  ");
-        System.out.println("  2 = Выход      ");
-        System.out.println("  -------------  ");
+        System.out.println("  <=               Меню               =>  ");
+        System.out.println("  --------------------------------------  ");
+        System.out.println("  1 = Рассчитать код ");
+        System.out.println("  2 = Завершить работу ");
+        System.out.println();
+        System.out.println("  --------------------------------------  ");
           System.out.print("  Command => ");
     }
 
@@ -34,12 +35,12 @@ public class View {
             case 1:
                 this.clearScreen();
                 System.out.println();
-                System.out.println("  <=       Данные для расчета     =>  ");
-                System.out.println("  ----------------------------------  ");
-                  System.out.print("  Номер магазина в системе NQ: ");
+                System.out.println("  <=     Ввод данных для расчета      =>  ");
+                System.out.println("  --------------------------------------  ");
+                  System.out.print("  1: Номер магазина в системе NQ: ");
                 break;
             case 2:
-                  System.out.print("  Дата в формате DDMMYY: ");
+                  System.out.print("  2: Дата в формате DDMMYY: ");
                 break;
         }
     }
@@ -52,11 +53,14 @@ public class View {
     public void showResult(String result){
         this.clearScreen();
         System.out.println();
-        System.out.println("  <=        Код авторизации       =>  ");
-        System.out.println("  ----------------------------------  ");
-        System.out.println("  " + result);
-        System.out.println("  ----------------------------------  ");
-        System.out.println("  Нажмите: 1 - Повторить | 2 - Выйти  ");
+        System.out.println("  <=          Код авторизации         =>  ");
+        System.out.println("  --------------------------------------  ");
+        System.out.println("             >>  "+ result +"  << ");
+        System.out.println();
+        System.out.println("  --------------------------------------  ");
+        System.out.println("  1 = Скопировать в буфер ");
+        System.out.println("  2 = Повторить расчет ");
+        System.out.println("  3 = Завершить ");
         System.out.println();
           System.out.print("  Command => ");
     }

@@ -1,8 +1,9 @@
 package mvc;
 
-import java.util.Arrays;
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.util.InputMismatchException;
-import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -121,7 +122,7 @@ public class Controller {
     public void run() {
         int select = 0;
         switch (this.getMenuItem()) {
-            case 1:
+            case 1: //Выполнить расчет кода авторизации
                 this.setData();
                 String result = this.calcCode(model.getDate(), model.getDepNo());
                 while (select == 0) {
@@ -132,10 +133,16 @@ public class Controller {
                         select = 0;
                     }
                     switch (select) {
-                        case 1:
+                        case 1: //Скопировать резльутат в буфер
+                            StringSelection selection = new StringSelection(result);
+                            Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+                            clipboard.setContents(selection, selection);
+                            select = 0;
+                            break;
+                        case 2: //Повторить расчет
                             this.run();
                             break;
-                        case 2:
+                        case 3: //Завершить работу
                             System.exit(0);
                             break;
                         default:
@@ -143,7 +150,7 @@ public class Controller {
                     }
                 }
                 break;
-            case 2:
+            case 2: //Завершить работу
                 System.exit(0);
                 break;
             default:

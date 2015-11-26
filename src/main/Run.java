@@ -5,7 +5,7 @@ import mvc.Model;
 import mvc.View;
 
 /**
- * Main class
+ * Исполняемый класс
  */
 public class Run {
     public static void main(String[] args) {
