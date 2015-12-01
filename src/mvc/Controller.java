@@ -3,6 +3,9 @@ package mvc;
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -11,10 +14,15 @@ import java.util.Scanner;
  */
 public class Controller {
     //Атрибуты класса..
-    private final View view;    /** Пользовательский интерфейс **/
-    private final Model model;  /** Модель данных **/
+    private final View view;
+    private final Model model;
 
     private Scanner sc = new Scanner(System.in);
+
+    //Получаем значение текущей даты
+    Date date = Calendar.getInstance().getTime();
+    SimpleDateFormat sdf = new SimpleDateFormat("ddMMyy");
+    String curDate = sdf.format(date);
 
     //Конструктор класса..
     public Controller(View view, Model model) {
@@ -23,41 +31,38 @@ public class Controller {
     }
 
     //Методы класса..
-    /**
-     * Выбор пункта в главном меню
-     * @return выбор 1 или 2
-     * @see View#showMainMenu()
-     */
-    private int getMenuItem() {
-        int select = 0;
-        view.showMainMenu();
-        try {
-            select = sc.nextInt();
-        } catch (InputMismatchException e) {
-            this.getMenuItem();
-        }
-        sc.nextLine();
-        return select;
-    }
 
     /**
      * Ввод данных для расчета кода
-     * @see View#showDataAsk(int)
+     * @see View#showDataAsk()
      * @see Model
      */
     private void setData() {
-        view.showDataAsk(1);
+        int select = 0;
+        view.showDataAsk();
         try {
-            model.setDepNo(sc.nextInt());
+            select = sc.nextInt();
         } catch (InputMismatchException e) {
             this.setData();
         }
-        view.showDataAsk(2);
-        try {
-            model.setDate(sc.nextInt());
-        } catch (InputMismatchException e) {
-            this.setData();
-        }
+        sc.nextLine();
+        switch (select) {
+            case 1: // Завод 2295
+                model.setDepNo(1711);
+                break;
+            case 2: // Завод 2361
+                model.setDepNo(3444);
+                break;
+            case 3: // Завод 2371
+                model.setDepNo(3632);
+                break;
+            case 4: // Завершить
+                System.exit(0);
+                break;
+            default:
+                this.setData();
+            }
+        model.setDate(curDate);
     }
 
     /**
@@ -66,12 +71,12 @@ public class Controller {
      * @param depNo номер подразделения
      * @return сгенерированный код
      */
-    private String calcCode(int date, int depNo) {
+    private String calcCode(String date, int depNo) {
         String result;
         int iCRC;
         char[] sKey = new char[10];
 
-        depNo += 1000;
+        depNo += 10000000;
         result = "" + depNo;
         result = result.substring(Math.max(0, result.length() - 3));
         result = date + result;
@@ -116,45 +121,36 @@ public class Controller {
     }
 
     /**
-     * Алгорит работы приложения
+     * Алгоритм работы приложения
      * @see View#showResult(String) :
      */
     public void run() {
         int select = 0;
-        switch (this.getMenuItem()) {
-            case 1: //Выполнить расчет кода авторизации
-                this.setData();
-                String result = this.calcCode(model.getDate(), model.getDepNo());
-                while (select == 0) {
-                    view.showResult(result);
-                    try {
-                        select = sc.nextInt();
-                    } catch (Exception e) {
-                        select = 0;
-                    }
-                    switch (select) {
-                        case 1: //Скопировать резльутат в буфер
-                            StringSelection selection = new StringSelection(result);
-                            Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-                            clipboard.setContents(selection, selection);
-                            select = 0;
-                            break;
-                        case 2: //Повторить расчет
-                            this.run();
-                            break;
-                        case 3: //Завершить работу
-                            System.exit(0);
-                            break;
-                        default:
-                            select = 0;
-                    }
-                }
-                break;
-            case 2: //Завершить работу
-                System.exit(0);
-                break;
-            default:
-                this.run();
+        this.setData();
+        String result = this.calcCode(model.getDate(), model.getDepNo());
+        while (select == 0) {
+            view.showResult(result);
+            try {
+                select = sc.nextInt();
+            } catch (Exception e) {
+                select = 0;
+            }
+            switch (select) {
+                case 1: //Скопировать резльутат в буфер
+                    StringSelection selection = new StringSelection(result);
+                    Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+                    clipboard.setContents(selection, selection);
+                    select = 0;
+                    break;
+                case 2: //Повторить расчет
+                    this.run();
+                    break;
+                case 3: //Завершить работу
+                    System.exit(0);
+                    break;
+                default:
+                    select = 0;
+            }
         }
     }
 }

@@ -11,38 +11,24 @@ public class View {
 
     //Методы класса..
     /**
-     * Главное меню программы
-     */
-    public void showMainMenu() {
-        this.clearScreen();
-        System.out.println();
-        System.out.println("  <=               Меню               =>  ");
-        System.out.println("  --------------------------------------  ");
-        System.out.println("  1 = Рассчитать код ");
-        System.out.println("  2 = Завершить работу ");
-        System.out.println();
-        System.out.println("  --------------------------------------  ");
-          System.out.print("  Command => ");
-    }
-
-    /**
      * Ввод данных для расчета кода
-     * @param data номер строки 1 - номер подразделения, 2 - дата
      * @see Controller#setData()
      */
-    public void showDataAsk(int data) {
-        switch (data) {
-            case 1:
-                this.clearScreen();
-                System.out.println();
-                System.out.println("  <=     Ввод данных для расчета      =>  ");
-                System.out.println("  --------------------------------------  ");
-                  System.out.print("  1: Номер магазина в системе NQ: ");
-                break;
-            case 2:
-                  System.out.print("  2: Дата в формате DDMMYY: ");
-                break;
-        }
+    public void showDataAsk() {
+        this.clearScreen();
+        System.out.println();
+        System.out.println("  <=    Выберите завод для расчета    =>  ");
+        System.out.println("  --------------------------------------  ");
+        System.out.println();
+        System.out.println("  1: Завод 2295 ");
+        System.out.println("  2: Завод 2361 ");
+        System.out.println("  3: Завод 2370 ");
+        System.out.println("  4: Завершить ");
+        System.out.println();
+        System.out.println();
+        System.out.println("  --------------------------------------  ");
+        System.out.println();
+          System.out.print("  Command => ");
     }
 
     /**
@@ -53,14 +39,16 @@ public class View {
     public void showResult(String result){
         this.clearScreen();
         System.out.println();
-        System.out.println("  <=          Код авторизации         =>  ");
+        System.out.println("  <=          Код  авторизации        =>  ");
         System.out.println("  --------------------------------------  ");
+        System.out.println();
         System.out.println("             >>  "+ result +"  << ");
         System.out.println();
-        System.out.println("  --------------------------------------  ");
+        System.out.println();
         System.out.println("  1 = Скопировать в буфер ");
         System.out.println("  2 = Повторить расчет ");
         System.out.println("  3 = Завершить ");
+        System.out.println("  --------------------------------------  ");
         System.out.println();
           System.out.print("  Command => ");
     }
