@@ -42,19 +42,20 @@ public class Controller {
 
     /**
      * Ввод данных для расчета кода
-     * @see View#showDataAsk(int)
+     * @see View#showDataAsk(int, int)
      * @see Model
      */
     private void setData() {
-        view.showDataAsk(1);
+        view.showDataAsk(1, 0);
         try {
             model.setDepNo(sc.nextInt());
         } catch (InputMismatchException e) {
             this.setData();
         }
-        view.showDataAsk(2);
+        sc.nextLine();
+        view.showDataAsk(2, model.getDepNo());
         try {
-            model.setDate(sc.nextInt());
+            model.setDate(sc.nextLine());
         } catch (InputMismatchException e) {
             this.setData();
         }
@@ -66,12 +67,12 @@ public class Controller {
      * @param depNo номер подразделения
      * @return сгенерированный код
      */
-    private String calcCode(int date, int depNo) {
+    private String calcCode(String date, int depNo) {
         String result;
         int iCRC;
         char[] sKey = new char[10];
 
-        depNo += 1000;
+        depNo += 10000000;
         result = "" + depNo;
         result = result.substring(Math.max(0, result.length() - 3));
         result = date + result;

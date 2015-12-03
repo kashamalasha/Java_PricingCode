@@ -5,8 +5,8 @@ package mvc;
  */
 public class Model {
     //Атрибуты класса..
-    int DepNo; /** Номер подразделения **/
-    int Date;  /** Дата в формате DDMMYY **/
+    int DepNo; // Номер подразделения
+    String Date;  // Дата в формате DDMMYY
 
     //Конструктор класса..
     //Методы класса..
@@ -27,14 +27,14 @@ public class Model {
     /**
      * @return дата
      */
-    public int getDate() {
+    public String getDate() {
         return Date;
     }
 
     /**
      * @param date дата в формате DDMMYY
      */
-    public void setDate(int date) {
+    public void setDate(String date) {
         this.Date = date;
     }
 }

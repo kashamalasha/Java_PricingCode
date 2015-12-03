@@ -18,8 +18,12 @@ public class View {
         System.out.println();
         System.out.println("  <=               Меню               =>  ");
         System.out.println("  --------------------------------------  ");
+        System.out.println();
         System.out.println("  1 = Рассчитать код ");
         System.out.println("  2 = Завершить работу ");
+        System.out.println();
+        System.out.println();
+        System.out.println();
         System.out.println();
         System.out.println("  --------------------------------------  ");
           System.out.print("  Command => ");
@@ -30,17 +34,37 @@ public class View {
      * @param data номер строки 1 - номер подразделения, 2 - дата
      * @see Controller#setData()
      */
-    public void showDataAsk(int data) {
+    public void showDataAsk(int data, int DepNo) {
         switch (data) {
             case 1:
                 this.clearScreen();
                 System.out.println();
                 System.out.println("  <=     Ввод данных для расчета      =>  ");
                 System.out.println("  --------------------------------------  ");
-                  System.out.print("  1: Номер магазина в системе NQ: ");
+                System.out.println();
+                System.out.println("  1: Номер магазина в системе NQ: ");
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println("  --------------------------------------  ");
+                  System.out.print("  Command => ");
                 break;
             case 2:
-                  System.out.print("  2: Дата в формате DDMMYY: ");
+                this.clearScreen();
+                System.out.println();
+                System.out.println("  <=     Ввод данных для расчета      =>  ");
+                System.out.println("  --------------------------------------  ");
+                System.out.println();
+                System.out.println("  1: Номер магазина в системе NQ: " + DepNo);
+                System.out.println("  2: Дата в формате DDMMYY: ");
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println();
+                System.out.println("  --------------------------------------  ");
+                  System.out.print("  Command => ");
                 break;
         }
     }
@@ -55,13 +79,14 @@ public class View {
         System.out.println();
         System.out.println("  <=          Код авторизации         =>  ");
         System.out.println("  --------------------------------------  ");
+        System.out.println();
         System.out.println("             >>  "+ result +"  << ");
         System.out.println();
-        System.out.println("  --------------------------------------  ");
         System.out.println("  1 = Скопировать в буфер ");
         System.out.println("  2 = Повторить расчет ");
         System.out.println("  3 = Завершить ");
         System.out.println();
+        System.out.println("  --------------------------------------  ");
           System.out.print("  Command => ");
     }
 
