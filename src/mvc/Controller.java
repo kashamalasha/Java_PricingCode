@@ -11,8 +11,8 @@ import java.util.Scanner;
  */
 public class Controller {
     //Атрибуты класса..
-    private final View view;    /** Пользовательский интерфейс **/
-    private final Model model;  /** Модель данных **/
+    private final View view;
+    private final Model model;
 
     private Scanner sc = new Scanner(System.in);
 
@@ -116,7 +116,7 @@ public class Controller {
     }
 
     /**
-     * Алгорит работы приложения
+     * Алгоритм работы приложения
      * @see View#showResult(String) :
      */
     public void run() {
