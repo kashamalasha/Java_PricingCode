@@ -3,8 +3,8 @@ package mvc;
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Логика программы
@@ -15,6 +15,12 @@ public class Controller {
     private final Model model;
 
     private Scanner sc = new Scanner(System.in);
+
+
+    //Получаем значение текущего года
+    Date date = Calendar.getInstance().getTime();
+    SimpleDateFormat sdf = new SimpleDateFormat("yy");
+    String curYear = sdf.format(date);
 
     //Конструктор класса..
     public Controller(View view, Model model) {
@@ -29,15 +35,13 @@ public class Controller {
      * @see View#showMainMenu()
      */
     private int getMenuItem() {
-        int select = 0;
         view.showMainMenu();
-        try {
-            select = sc.nextInt();
-        } catch (InputMismatchException e) {
-            this.getMenuItem();
+        if ((sc.hasNextInt())) {
+            return sc.nextInt();
+        } else {
+            sc.next();
+            return this.getMenuItem();
         }
-        sc.nextLine();
-        return select;
     }
 
     /**
@@ -46,19 +50,27 @@ public class Controller {
      * @see Model
      */
     private void setData() {
+        boolean correct = false;
         view.showDataAsk(1, 0);
-        try {
+        if ((sc.hasNextInt())) {
             model.setDepNo(sc.nextInt());
-        } catch (InputMismatchException e) {
+        } else {
+            sc.next();
             this.setData();
         }
         sc.nextLine();
-        view.showDataAsk(2, model.getDepNo());
-        try {
-            model.setDate(sc.nextLine());
-        } catch (InputMismatchException e) {
-            this.setData();
-        }
+        do {
+            view.showDataAsk(2, model.getDepNo());
+            String input = sc.nextLine();
+            if (input.matches("[0-9]+") && input.length() == 6) {
+                if (Integer.parseInt(input.substring(0, 2)) <= 31 &&
+                    Integer.parseInt(input.substring(2, 4)) <= 12 &&
+                    Objects.equals(input.substring(4, 6), curYear)) {
+                        model.setDate(input);
+                        correct = true;
+                }
+            }
+        } while (!correct);
     }
 
     /**
