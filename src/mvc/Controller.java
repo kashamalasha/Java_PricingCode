@@ -4,10 +4,7 @@ import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Логика программы
@@ -38,30 +35,28 @@ public class Controller {
      * @see Model
      */
     private void setData() {
-        int select = 0;
         view.showDataAsk();
-        try {
-            select = sc.nextInt();
-        } catch (InputMismatchException e) {
+        if ((sc.hasNextInt())) {
+            switch (sc.nextInt()) {
+                case 1: // Завод 2295
+                    model.setDepNo(1711);
+                    break;
+                case 2: // Завод 2361
+                    model.setDepNo(3444);
+                    break;
+                case 3: // Завод 2371
+                    model.setDepNo(3632);
+                    break;
+                case 4: // Завершить
+                    System.exit(0);
+                    break;
+                default:
+                    this.setData();
+            }
+        } else {
+            sc.next();
             this.setData();
         }
-        sc.nextLine();
-        switch (select) {
-            case 1: // Завод 2295
-                model.setDepNo(1711);
-                break;
-            case 2: // Завод 2361
-                model.setDepNo(3444);
-                break;
-            case 3: // Завод 2371
-                model.setDepNo(3632);
-                break;
-            case 4: // Завершить
-                System.exit(0);
-                break;
-            default:
-                this.setData();
-            }
         model.setDate(curDate);
     }
 
@@ -130,9 +125,9 @@ public class Controller {
         String result = this.calcCode(model.getDate(), model.getDepNo());
         while (select == 0) {
             view.showResult(result);
-            try {
+            if (sc.hasNextInt()) {
                 select = sc.nextInt();
-            } catch (Exception e) {
+            } else {
                 select = 0;
             }
             switch (select) {
@@ -145,7 +140,7 @@ public class Controller {
                 case 2: //Повторить расчет
                     this.run();
                     break;
-                case 3: //Завершить работу
+                case 4: //Завершить работу
                     System.exit(0);
                     break;
                 default:
