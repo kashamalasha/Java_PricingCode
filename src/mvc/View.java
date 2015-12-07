@@ -25,7 +25,7 @@ public class View {
         System.out.println("  3: Завод 2370 ");
         System.out.println();
         System.out.println();
-        System.out.println("  4: Завершить ");
+        System.out.println("  0: Завершить ");
         System.out.println("  --------------------------------------  ");
         System.out.println();
           System.out.print("  Command => ");
@@ -47,7 +47,7 @@ public class View {
         System.out.println("  1: Скопировать в буфер ");
         System.out.println("  2: Повторить расчет ");
         System.out.println();
-        System.out.println("  4: Завершить ");
+        System.out.println("  0: Завершить ");
         System.out.println("  --------------------------------------  ");
         System.out.println();
           System.out.print("  Command => ");

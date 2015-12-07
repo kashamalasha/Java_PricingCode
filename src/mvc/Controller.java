@@ -47,7 +47,7 @@ public class Controller {
                 case 3: // Завод 2371
                     model.setDepNo(3632);
                     break;
-                case 4: // Завершить
+                case 0: // Завершить
                     System.exit(0);
                     break;
                 default:
@@ -140,7 +140,7 @@ public class Controller {
                 case 2: //Повторить расчет
                     this.run();
                     break;
-                case 4: //Завершить работу
+                case 0: //Завершить работу
                     System.exit(0);
                     break;
                 default:
