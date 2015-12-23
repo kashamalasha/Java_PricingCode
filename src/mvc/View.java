@@ -20,7 +20,7 @@ public class View {
         System.out.println("  --------------------------------------  ");
         System.out.println();
         System.out.println("  1 = Рассчитать код ");
-        System.out.println("  2 = Завершить работу ");
+        System.out.println("  0 = Завершить работу ");
         System.out.println();
         System.out.println();
         System.out.println();
@@ -84,7 +84,7 @@ public class View {
         System.out.println();
         System.out.println("  1 = Скопировать в буфер ");
         System.out.println("  2 = Повторить расчет ");
-        System.out.println("  3 = Завершить ");
+        System.out.println("  0 = Завершить ");
         System.out.println();
         System.out.println("  --------------------------------------  ");
           System.out.print("  Command => ");

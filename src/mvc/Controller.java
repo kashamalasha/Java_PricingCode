@@ -155,7 +155,7 @@ public class Controller {
                         case 2: //Повторить расчет
                             this.run();
                             break;
-                        case 3: //Завершить работу
+                        case 0: //Завершить работу
                             System.exit(0);
                             break;
                         default:
@@ -163,7 +163,7 @@ public class Controller {
                     }
                 }
                 break;
-            case 2: //Завершить работу
+            case 0: //Завершить работу
                 System.exit(0);
                 break;
             default:
