@@ -38,13 +38,16 @@ public class Controller {
         view.showDataAsk();
         if ((sc.hasNextInt())) {
             switch (sc.nextInt()) {
-                case 1: // Завод 2295
+                case 1: // Завод 2541
+                    model.setDepNo(6509);
+                    break;
+                case 2: // Завод 2295
                     model.setDepNo(1711);
                     break;
-                case 2: // Завод 2361
+                case 3: // Завод 2361
                     model.setDepNo(3444);
                     break;
-                case 3: // Завод 2371
+                case 4: // Завод 2371
                     model.setDepNo(3632);
                     break;
                 case 0: // Завершить

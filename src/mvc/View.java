@@ -20,10 +20,10 @@ public class View {
         System.out.println("  <=    Выберите завод для расчета    =>  ");
         System.out.println("  --------------------------------------  ");
         System.out.println();
-        System.out.println("  1: Завод 2295 ");
-        System.out.println("  2: Завод 2361 ");
-        System.out.println("  3: Завод 2370 ");
-        System.out.println();
+        System.out.println("  1: Завод 2541 ");
+        System.out.println("  2: Завод 2295 ");
+        System.out.println("  3: Завод 2361 ");
+        System.out.println("  4: Завод 2370 ");
         System.out.println();
         System.out.println("  0: Завершить ");
         System.out.println("  --------------------------------------  ");
