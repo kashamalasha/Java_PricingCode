@@ -13,7 +13,7 @@ public class View {
     /**
      * Главное меню программы
      */
-    public void showMainMenu() {
+    void showMainMenu() {
         this.clearScreen();
         System.out.println();
         System.out.println("  <=               Меню               =>  ");
@@ -34,7 +34,7 @@ public class View {
      * @param data номер строки 1 - номер подразделения, 2 - дата
      * @see Controller#setData()
      */
-    public void showDataAsk(int data, int DepNo) {
+    void showDataAsk(int data, int DepNo) {
         switch (data) {
             case 1:
                 this.clearScreen();
@@ -74,7 +74,7 @@ public class View {
      * @param result Строка с кодом авторизации
      * @see Controller#run()
      */
-    public void showResult(String result){
+    void showResult(String result){
         this.clearScreen();
         System.out.println();
         System.out.println("  <=          Код авторизации         =>  ");
@@ -97,7 +97,7 @@ public class View {
      *   ANSI_CLS = "\u001b[2J"
      *   ANSI_HOME = "\u001b[H"
      */
-    private void clearScreen() {
+    void clearScreen() {
         final String OS = System.getProperty("os.name");
         if (OS.contains("Windows")) {
             try {

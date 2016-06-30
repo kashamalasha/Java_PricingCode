@@ -18,9 +18,9 @@ public class Controller {
 
 
     //Получаем значение текущего года
-    Date date = Calendar.getInstance().getTime();
-    SimpleDateFormat sdf = new SimpleDateFormat("yy");
-    String curYear = sdf.format(date);
+    private Date date = Calendar.getInstance().getTime();
+    private SimpleDateFormat sdf = new SimpleDateFormat("yy");
+    private String curYear = sdf.format(date);
 
     //Конструктор класса..
     public Controller(View view, Model model) {
@@ -156,6 +156,7 @@ public class Controller {
                             this.run();
                             break;
                         case 0: //Завершить работу
+                            view.clearScreen();
                             System.exit(0);
                             break;
                         default:
@@ -164,6 +165,7 @@ public class Controller {
                 }
                 break;
             case 0: //Завершить работу
+                view.clearScreen();
                 System.exit(0);
                 break;
             default:
